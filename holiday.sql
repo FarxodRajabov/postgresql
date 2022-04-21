@@ -1012,3 +1012,119 @@ select max(price) from holiday;
 select min(price) from holiday;
 
 select AVG(price) from holiday;
+
+select round(AVG(price)) from holiday;
+
+select destination_country, destination_city, max(price) from holiday group by destination_country, destination_city;
+
+select destination_country, destination_city, min(price) from holiday group by destination_country, destination_city;
+
+select destination_country, max(price) from holiday group by destination_country;
+
+select sum(price) from holiday;
+
+select destination_country, sum(price) from holiday group by destination_country;
+
+select 100 + 20;
+
+select  5!;
+
+SELECT id, destination_country,destination_city, round(price) from holiday;
+
+select now();
+
+select now() :: date;
+
+select now() :: time;
+
+select now() - interval ' 1 year';
+
+select now() - interval ' 10 months';
+
+select now() - interval ' 10 days';
+
+select now() + interval ' 1 year'; -- yil oldin
+
+select extract(year from now());
+
+select extract(day from now());
+
+select extract(dow from now());  -- hafta kuni soni
+
+select first_name , last_name, gender, county_of_birth, data_of_birth, AGE(NOW(), data_of_birth) AS age from employee;
+
+select * from employee limit 1 ;
+
+-- alter table employee drop constraint employee_pkey; -- unique deleted
+
+select *  from holiday where id =1 ;
+
+-- delete from holiday where id = 1 ;
+alter table holiday add primary key (id);
+
+select email, count(*) from employee group by email;
+
+ -- delete from holiday where id = 1;
+
+ alter table employee add constraint unique_email_address unique (email);
+
+select distinct gender from employee;
+
+alter table employee add constraint gender_constraint  check ( gender = 'Female' or gender = 'Male');
+
+delete from employee where  gender = 'panda';
+
+select * from employee;
+
+select * from employee where email like '%google%' and county_of_birth = 'China';
+
+delete from employee where email like '%google%' and county_of_birth = 'China';
+
+select * from employee where email like '%google%' and county_of_birth = 'China';
+
+select * from employee;
+
+update employee set email = 'curry@mail.com' where first_name = 'Adam';
+
+select * from employee where first_name = 'Adam';
+
+update employee set first_name = 'Johnca', last_name = 'doe', email = 'johnca@gmail.com' where first_name = 'Jarred';
+
+select * from employee where first_name = 'Johnca';
+
+INSERT into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth)
+values ('Johnca', 'doe', 'Male' , 'johnca@gmail.com', '2021-06-01', 'Thailand');
+
+alter table employee add constraint unique_email_adress unique (email);
+
+delete from employee where first_name = 'Johnca';
+
+select * from employee where  email = 'curry@mail.com';
+
+delete from employee where first_name = 'Adam';
+
+INSERT into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth)
+values ('Johnca', 'doe', 'Male' , 'johnca@gmail.com', '2021-06-01', 'Thailand')
+on conflict (email) do nothing ;
+
+select * from employee where first_name = 'Johnca';
+
+INSERT into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth)
+values ('Johnca', 'doe', 'Male' , 'johnca@google.com', '2021-06-01', 'Thailand')
+on conflict (email) do update set email = excluded.email;
+
+-- INSERT into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth)
+-- values ('Johnca', 'doe', 'Male' , 'johnca@google.com', '2021-06-01', 'Thailand')
+-- on conflict (id) do update set email = excluded.email;
+
+-- INSERT into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth)
+-- values ('Jane', 'doe', 'Male' , 'janeca@google.com', '2021-06-01', 'Thailand')
+-- on conflict (id) do update set email = excluded.email , first_name = excluded.first_name; // id bilan email uniqu bulsa usha idni ismini, emalini uzgarturish
+
+
+
+
+
+
+
+

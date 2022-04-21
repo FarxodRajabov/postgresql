@@ -1,6 +1,7 @@
 drop table if exists employee;
 
 create table employee (
+    id BIGSERIAL not null primary key ,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	gender VARCHAR(50),
@@ -1007,7 +1008,7 @@ insert into employee (first_name, last_name, gender, email, data_of_birth, count
 insert into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth) values ('Gerick', 'Danielovitch', 'Male', 'gdanielovitchro@newsvine.com', '2021-09-12', 'Philippines');
 insert into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth) values ('Jannel', 'Gabotti', 'Female', 'jgabottirp@cnet.com', '2022-02-02', 'China');
 insert into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth) values ('Lacy', 'Boddie', 'Female', 'lboddierq@geocities.jp', '2021-08-04', 'Brazil');
-insert into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth) values ('Breena', 'Dilks', 'Female', 'bdilksrr@gnu.org', '2021-06-13', 'Russia');
+insert into employee (first_name, last_name, gender, email, data_of_birth, county_of_birth) values ('john', 'doe', 'panda', 'pandar@gnu.org', '2021-06-13', 'Russia');
 
 SELECT first_name FROM employee;
 
@@ -1058,6 +1059,8 @@ select county_of_birth, count(*) from employee group by county_of_birth having c
 select first_name as name, last_name as surname, gender as sex, email, data_of_birth, county_of_birth from  employee;
 
 select coalesce(email, 'not applicable') from employee;
+
+select first_name from employee;
 
 
 
